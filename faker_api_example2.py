@@ -16,9 +16,13 @@ response = requests.get(BASE_URL + endpoint, params=params)
 
 # Verificar si la solicitud fue exitosa
 if response.status_code == 200:
-    # Mostrar los datos generados
+   
+       # Mostrar los datos generados dl primer producto
     data = response.json()
-    for product in data['data']:
+    for i, product in enumerate(data['data']):
+        if i >= 1:
+            break
         print(product)
+       
 else:
     print('Error al hacer la solicitud:', response.status_code)
